@@ -1,0 +1,6 @@
+# Scan reports and generated update scripts
+scans/
+# Generated from data/seed.json on first run (also holds the version cache)
+data/software.db
+__pycache__/
+*.pyc

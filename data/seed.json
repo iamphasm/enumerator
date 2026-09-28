@@ -1,0 +1,964 @@
+{
+ "_comment": "Seed data for data/software.db. Each entry: name, aliases (lowercase strings matched against nmap/nikto product names and CPEs), url (page listing releases), regex (ONE capture group = a version), branch_depth (0 = compare against newest release overall, 1 = newest with same major, 2 = same major.minor), packages per package manager, services (systemd units to restart), notes. Edit this file and run `python3 swdb.py init --force`, or use `python3 swdb.py add`.",
+ "software": [
+  {
+   "name": "apache-httpd",
+   "aliases": [
+    "apache httpd",
+    "apache:http_server",
+    "apache"
+   ],
+   "url": "https://downloads.apache.org/httpd/",
+   "regex": "httpd-(\\d+\\.\\d+\\.\\d+)\\.tar\\.gz",
+   "branch_depth": 0,
+   "packages": {
+    "apt": [
+     "apache2"
+    ],
+    "dnf": [
+     "httpd"
+    ],
+    "pacman": [
+     "apache"
+    ],
+    "zypper": [
+     "apache2"
+    ],
+    "apk": [
+     "apache2"
+    ]
+   },
+   "services": [
+    "apache2",
+    "httpd"
+   ]
+  },
+  {
+   "name": "apache-tomcat",
+   "aliases": [
+    "apache tomcat",
+    "apache:tomcat",
+    "tomcat"
+   ],
+   "url": "https://tomcat.apache.org/index.html",
+   "regex": "Tomcat (\\d+\\.\\d+\\.\\d+) Released",
+   "branch_depth": 1,
+   "packages": {
+    "apt": [
+     "tomcat10"
+    ],
+    "dnf": [
+     "tomcat"
+    ],
+    "pacman": [
+     "tomcat10"
+    ],
+    "zypper": [
+     "tomcat"
+    ]
+   },
+   "services": [
+    "tomcat10",
+    "tomcat"
+   ]
+  },
+  {
+   "name": "bind",
+   "aliases": [
+    "isc bind",
+    "isc:bind",
+    "bind"
+   ],
+   "url": "https://downloads.isc.org/isc/bind9/",
+   "regex": "href=\"(9\\.\\d+\\.\\d+)/\"",
+   "branch_depth": 2,
+   "packages": {
+    "apt": [
+     "bind9"
+    ],
+    "dnf": [
+     "bind"
+    ],
+    "pacman": [
+     "bind"
+    ],
+    "zypper": [
+     "bind"
+    ],
+    "apk": [
+     "bind"
+    ]
+   },
+   "services": [
+    "named",
+    "bind9"
+   ]
+  },
+  {
+   "name": "caddy",
+   "aliases": [
+    "caddy",
+    "caddy httpd",
+    "caddyserver:caddy"
+   ],
+   "url": "https://api.github.com/repos/caddyserver/caddy/releases?per_page=100",
+   "regex": "\"tag_name\":\\s*\"v(\\d+\\.\\d+\\.\\d+)\"",
+   "branch_depth": 0,
+   "packages": {
+    "apt": [
+     "caddy"
+    ],
+    "dnf": [
+     "caddy"
+    ],
+    "pacman": [
+     "caddy"
+    ],
+    "apk": [
+     "caddy"
+    ]
+   },
+   "services": [
+    "caddy"
+   ]
+  },
+  {
+   "name": "cups",
+   "aliases": [
+    "cups",
+    "apple:cups",
+    "openprinting:cups"
+   ],
+   "url": "https://api.github.com/repos/OpenPrinting/cups/releases?per_page=100",
+   "regex": "\"tag_name\":\\s*\"v(\\d+\\.\\d+\\.\\d+)\"",
+   "branch_depth": 0,
+   "packages": {
+    "apt": [
+     "cups"
+    ],
+    "dnf": [
+     "cups"
+    ],
+    "pacman": [
+     "cups"
+    ],
+    "zypper": [
+     "cups"
+    ],
+    "apk": [
+     "cups"
+    ]
+   },
+   "services": [
+    "cups"
+   ]
+  },
+  {
+   "name": "dnsmasq",
+   "aliases": [
+    "dnsmasq"
+   ],
+   "url": "https://thekelleys.org.uk/dnsmasq/",
+   "regex": "dnsmasq-(\\d+\\.\\d+)\\.tar\\.gz",
+   "branch_depth": 0,
+   "packages": {
+    "apt": [
+     "dnsmasq"
+    ],
+    "dnf": [
+     "dnsmasq"
+    ],
+    "pacman": [
+     "dnsmasq"
+    ],
+    "zypper": [
+     "dnsmasq"
+    ],
+    "apk": [
+     "dnsmasq"
+    ]
+   },
+   "services": [
+    "dnsmasq"
+   ]
+  },
+  {
+   "name": "dovecot",
+   "aliases": [
+    "dovecot",
+    "dovecot imapd",
+    "dovecot pop3d"
+   ],
+   "url": "https://api.github.com/repos/dovecot/core/tags?per_page=100",
+   "regex": "\"name\":\\s*\"(2\\.\\d+\\.\\d+)\"",
+   "branch_depth": 2,
+   "packages": {
+    "apt": [
+     "dovecot-core"
+    ],
+    "dnf": [
+     "dovecot"
+    ],
+    "pacman": [
+     "dovecot"
+    ],
+    "zypper": [
+     "dovecot"
+    ],
+    "apk": [
+     "dovecot"
+    ]
+   },
+   "services": [
+    "dovecot"
+   ]
+  },
+  {
+   "name": "elasticsearch",
+   "aliases": [
+    "elasticsearch",
+    "elasticsearch rest api",
+    "elastic:elasticsearch"
+   ],
+   "url": "https://api.github.com/repos/elastic/elasticsearch/releases?per_page=100",
+   "regex": "\"tag_name\":\\s*\"v(\\d+\\.\\d+\\.\\d+)\"",
+   "branch_depth": 1,
+   "packages": {
+    "apt": [
+     "elasticsearch"
+    ],
+    "dnf": [
+     "elasticsearch"
+    ]
+   },
+   "services": [
+    "elasticsearch"
+   ]
+  },
+  {
+   "name": "exim",
+   "aliases": [
+    "exim",
+    "exim smtpd"
+   ],
+   "url": "https://api.github.com/repos/Exim/exim/tags?per_page=100",
+   "regex": "\"name\":\\s*\"exim-(\\d+\\.\\d+(?:\\.\\d+)?)\"",
+   "branch_depth": 0,
+   "packages": {
+    "apt": [
+     "exim4-daemon-light"
+    ],
+    "dnf": [
+     "exim"
+    ],
+    "pacman": [
+     "exim"
+    ],
+    "zypper": [
+     "exim"
+    ],
+    "apk": [
+     "exim"
+    ]
+   },
+   "services": [
+    "exim4",
+    "exim"
+   ]
+  },
+  {
+   "name": "grafana",
+   "aliases": [
+    "grafana"
+   ],
+   "url": "https://api.github.com/repos/grafana/grafana/releases?per_page=100",
+   "regex": "\"tag_name\":\\s*\"v(\\d+\\.\\d+\\.\\d+)\"",
+   "branch_depth": 0,
+   "packages": {
+    "apt": [
+     "grafana"
+    ],
+    "dnf": [
+     "grafana"
+    ],
+    "pacman": [
+     "grafana"
+    ]
+   },
+   "services": [
+    "grafana-server"
+   ]
+  },
+  {
+   "name": "haproxy",
+   "aliases": [
+    "haproxy",
+    "haproxy http proxy"
+   ],
+   "url": "https://www.haproxy.org/",
+   "regex": "haproxy-(\\d+\\.\\d+\\.\\d+)\\.tar\\.gz",
+   "branch_depth": 2,
+   "packages": {
+    "apt": [
+     "haproxy"
+    ],
+    "dnf": [
+     "haproxy"
+    ],
+    "pacman": [
+     "haproxy"
+    ],
+    "zypper": [
+     "haproxy"
+    ],
+    "apk": [
+     "haproxy"
+    ]
+   },
+   "services": [
+    "haproxy"
+   ]
+  },
+  {
+   "name": "jenkins",
+   "aliases": [
+    "jenkins"
+   ],
+   "url": "https://updates.jenkins.io/stable/latestCore.txt",
+   "regex": "(\\d+\\.\\d+(?:\\.\\d+)?)",
+   "branch_depth": 0,
+   "packages": {
+    "apt": [
+     "jenkins"
+    ],
+    "dnf": [
+     "jenkins"
+    ]
+   },
+   "services": [
+    "jenkins"
+   ],
+   "notes": "Tracks the LTS line."
+  },
+  {
+   "name": "jetty",
+   "aliases": [
+    "jetty",
+    "eclipse:jetty"
+   ],
+   "url": "https://api.github.com/repos/jetty/jetty.project/releases?per_page=100",
+   "regex": "\"tag_name\":\\s*\"jetty-(\\d+\\.\\d+\\.\\d+)\"",
+   "branch_depth": 1,
+   "packages": {
+    "apt": [
+     "jetty9"
+    ]
+   },
+   "services": [
+    "jetty9",
+    "jetty"
+   ]
+  },
+  {
+   "name": "lighttpd",
+   "aliases": [
+    "lighttpd"
+   ],
+   "url": "https://download.lighttpd.net/lighttpd/releases-1.4.x/",
+   "regex": "lighttpd-(\\d+\\.\\d+\\.\\d+)\\.tar\\.gz",
+   "branch_depth": 0,
+   "packages": {
+    "apt": [
+     "lighttpd"
+    ],
+    "dnf": [
+     "lighttpd"
+    ],
+    "pacman": [
+     "lighttpd"
+    ],
+    "zypper": [
+     "lighttpd"
+    ],
+    "apk": [
+     "lighttpd"
+    ]
+   },
+   "services": [
+    "lighttpd"
+   ]
+  },
+  {
+   "name": "mariadb",
+   "aliases": [
+    "mariadb",
+    "mariadb:mariadb"
+   ],
+   "url": "https://archive.mariadb.org/",
+   "regex": "mariadb-(\\d+\\.\\d+\\.\\d+)/",
+   "branch_depth": 2,
+   "packages": {
+    "apt": [
+     "mariadb-server"
+    ],
+    "dnf": [
+     "mariadb-server"
+    ],
+    "pacman": [
+     "mariadb"
+    ],
+    "zypper": [
+     "mariadb"
+    ],
+    "apk": [
+     "mariadb"
+    ]
+   },
+   "services": [
+    "mariadb",
+    "mysql"
+   ]
+  },
+  {
+   "name": "memcached",
+   "aliases": [
+    "memcached"
+   ],
+   "url": "https://memcached.org/downloads",
+   "regex": "memcached-(\\d+\\.\\d+\\.\\d+)\\.tar\\.gz",
+   "branch_depth": 0,
+   "packages": {
+    "apt": [
+     "memcached"
+    ],
+    "dnf": [
+     "memcached"
+    ],
+    "pacman": [
+     "memcached"
+    ],
+    "zypper": [
+     "memcached"
+    ],
+    "apk": [
+     "memcached"
+    ]
+   },
+   "services": [
+    "memcached"
+   ]
+  },
+  {
+   "name": "mongodb",
+   "aliases": [
+    "mongodb",
+    "mongodb:mongodb"
+   ],
+   "url": "https://api.github.com/repos/mongodb/mongo/tags?per_page=100",
+   "regex": "\"name\":\\s*\"r(\\d+\\.\\d+\\.\\d+)\"",
+   "branch_depth": 2,
+   "packages": {
+    "apt": [
+     "mongodb-org"
+    ],
+    "dnf": [
+     "mongodb-org"
+    ]
+   },
+   "services": [
+    "mongod"
+   ]
+  },
+  {
+   "name": "mysql",
+   "aliases": [
+    "mysql",
+    "oracle:mysql"
+   ],
+   "url": "https://api.github.com/repos/mysql/mysql-server/git/matching-refs/tags/mysql-",
+   "regex": "refs/tags/mysql-(\\d+\\.\\d+\\.\\d+)\"",
+   "branch_depth": 2,
+   "packages": {
+    "apt": [
+     "mysql-server"
+    ],
+    "dnf": [
+     "mysql-server"
+    ],
+    "zypper": [
+     "mysql"
+    ]
+   },
+   "services": [
+    "mysql",
+    "mysqld"
+   ]
+  },
+  {
+   "name": "nginx",
+   "aliases": [
+    "nginx",
+    "igor_sysoev:nginx",
+    "f5:nginx"
+   ],
+   "url": "https://nginx.org/en/download.html",
+   "regex": "nginx-(\\d+\\.\\d+\\.\\d+)\\.tar\\.gz",
+   "branch_depth": 0,
+   "packages": {
+    "apt": [
+     "nginx"
+    ],
+    "dnf": [
+     "nginx"
+    ],
+    "pacman": [
+     "nginx"
+    ],
+    "zypper": [
+     "nginx"
+    ],
+    "apk": [
+     "nginx"
+    ]
+   },
+   "services": [
+    "nginx"
+   ]
+  },
+  {
+   "name": "nodejs",
+   "aliases": [
+    "node.js",
+    "nodejs"
+   ],
+   "url": "https://nodejs.org/dist/index.json",
+   "regex": "\"version\":\"v(\\d+\\.\\d+\\.\\d+)\"",
+   "branch_depth": 1,
+   "packages": {
+    "apt": [
+     "nodejs"
+    ],
+    "dnf": [
+     "nodejs"
+    ],
+    "pacman": [
+     "nodejs"
+    ],
+    "zypper": [
+     "nodejs"
+    ],
+    "apk": [
+     "nodejs"
+    ]
+   },
+   "services": []
+  },
+  {
+   "name": "openssh",
+   "aliases": [
+    "openssh",
+    "openbsd:openssh"
+   ],
+   "url": "https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/",
+   "regex": "openssh-(\\d+\\.\\d+p\\d+)\\.tar\\.gz",
+   "branch_depth": 0,
+   "packages": {
+    "apt": [
+     "openssh-server",
+     "openssh-client"
+    ],
+    "dnf": [
+     "openssh-server",
+     "openssh-clients"
+    ],
+    "pacman": [
+     "openssh"
+    ],
+    "zypper": [
+     "openssh"
+    ],
+    "apk": [
+     "openssh"
+    ]
+   },
+   "services": [
+    "ssh",
+    "sshd"
+   ]
+  },
+  {
+   "name": "openssl",
+   "aliases": [
+    "openssl"
+   ],
+   "url": "https://openssl-library.org/source/",
+   "regex": "openssl-(\\d+\\.\\d+\\.\\d+)\\.tar\\.gz",
+   "branch_depth": 2,
+   "packages": {
+    "apt": [
+     "openssl",
+     "libssl3t64"
+    ],
+    "dnf": [
+     "openssl"
+    ],
+    "pacman": [
+     "openssl"
+    ],
+    "zypper": [
+     "openssl"
+    ],
+    "apk": [
+     "openssl"
+    ]
+   },
+   "services": []
+  },
+  {
+   "name": "php",
+   "aliases": [
+    "php"
+   ],
+   "url": "https://www.php.net/releases/?json",
+   "regex": "\"version\":\\s*\"(\\d+\\.\\d+\\.\\d+)\"",
+   "branch_depth": 1,
+   "packages": {
+    "apt": [
+     "php"
+    ],
+    "dnf": [
+     "php"
+    ],
+    "pacman": [
+     "php"
+    ],
+    "zypper": [
+     "php8"
+    ]
+   },
+   "services": [],
+   "notes": "Only the newest release per major version is listed, so 8.3.x is compared with the newest 8.x."
+  },
+  {
+   "name": "postfix",
+   "aliases": [
+    "postfix",
+    "postfix smtpd"
+   ],
+   "url": "https://www.postfix.org/announcements.html",
+   "regex": "Postfix (?:stable release |version )?(\\d+\\.\\d+\\.\\d+)",
+   "branch_depth": 2,
+   "packages": {
+    "apt": [
+     "postfix"
+    ],
+    "dnf": [
+     "postfix"
+    ],
+    "pacman": [
+     "postfix"
+    ],
+    "zypper": [
+     "postfix"
+    ],
+    "apk": [
+     "postfix"
+    ]
+   },
+   "services": [
+    "postfix"
+   ]
+  },
+  {
+   "name": "postgresql",
+   "aliases": [
+    "postgresql",
+    "postgresql db"
+   ],
+   "url": "https://www.postgresql.org/ftp/source/",
+   "regex": "v(\\d+\\.\\d+(?:\\.\\d+)?)</a>",
+   "branch_depth": 1,
+   "packages": {
+    "apt": [
+     "postgresql"
+    ],
+    "dnf": [
+     "postgresql-server"
+    ],
+    "pacman": [
+     "postgresql"
+    ],
+    "zypper": [
+     "postgresql-server"
+    ],
+    "apk": [
+     "postgresql"
+    ]
+   },
+   "services": [
+    "postgresql"
+   ]
+  },
+  {
+   "name": "proftpd",
+   "aliases": [
+    "proftpd",
+    "proftpd:proftpd"
+   ],
+   "url": "https://api.github.com/repos/proftpd/proftpd/tags?per_page=100",
+   "regex": "\"name\":\\s*\"v(\\d+\\.\\d+\\.\\d+[a-z]?)\"",
+   "branch_depth": 0,
+   "packages": {
+    "apt": [
+     "proftpd-core"
+    ],
+    "dnf": [
+     "proftpd"
+    ],
+    "pacman": [
+     "proftpd"
+    ],
+    "zypper": [
+     "proftpd"
+    ]
+   },
+   "services": [
+    "proftpd"
+   ]
+  },
+  {
+   "name": "pure-ftpd",
+   "aliases": [
+    "pure-ftpd",
+    "pureftpd"
+   ],
+   "url": "https://download.pureftpd.org/pub/pure-ftpd/releases/",
+   "regex": "pure-ftpd-(\\d+\\.\\d+\\.\\d+)\\.tar\\.gz",
+   "branch_depth": 0,
+   "packages": {
+    "apt": [
+     "pure-ftpd"
+    ],
+    "dnf": [
+     "pure-ftpd"
+    ],
+    "zypper": [
+     "pure-ftpd"
+    ],
+    "apk": [
+     "pure-ftpd"
+    ]
+   },
+   "services": [
+    "pure-ftpd"
+   ]
+  },
+  {
+   "name": "python",
+   "aliases": [
+    "python",
+    "cpython",
+    "python:python"
+   ],
+   "url": "https://www.python.org/api/v2/downloads/release/?is_published=true&pre_release=false",
+   "regex": "\"name\":\\s*\"Python (\\d+\\.\\d+\\.\\d+)\"",
+   "branch_depth": 2,
+   "packages": {
+    "apt": [
+     "python3"
+    ],
+    "dnf": [
+     "python3"
+    ],
+    "pacman": [
+     "python"
+    ],
+    "zypper": [
+     "python3"
+    ],
+    "apk": [
+     "python3"
+    ]
+   },
+   "services": [],
+   "notes": "Only matters if the Python runtime is exposed, e.g. a Python web server banner."
+  },
+  {
+   "name": "rabbitmq",
+   "aliases": [
+    "rabbitmq",
+    "rabbitmq amqp",
+    "vmware:rabbitmq"
+   ],
+   "url": "https://api.github.com/repos/rabbitmq/rabbitmq-server/releases?per_page=100",
+   "regex": "\"tag_name\":\\s*\"v(\\d+\\.\\d+\\.\\d+)\"",
+   "branch_depth": 0,
+   "packages": {
+    "apt": [
+     "rabbitmq-server"
+    ],
+    "dnf": [
+     "rabbitmq-server"
+    ],
+    "pacman": [
+     "rabbitmq"
+    ]
+   },
+   "services": [
+    "rabbitmq-server"
+   ]
+  },
+  {
+   "name": "redis",
+   "aliases": [
+    "redis",
+    "redis key-value store",
+    "redislabs:redis"
+   ],
+   "url": "https://api.github.com/repos/redis/redis/releases?per_page=100",
+   "regex": "\"tag_name\":\\s*\"(\\d+\\.\\d+\\.\\d+)\"",
+   "branch_depth": 0,
+   "packages": {
+    "apt": [
+     "redis-server"
+    ],
+    "dnf": [
+     "redis"
+    ],
+    "pacman": [
+     "redis"
+    ],
+    "zypper": [
+     "redis"
+    ],
+    "apk": [
+     "redis"
+    ]
+   },
+   "services": [
+    "redis-server",
+    "redis"
+   ]
+  },
+  {
+   "name": "samba",
+   "aliases": [
+    "samba",
+    "samba smbd",
+    "samba:samba"
+   ],
+   "url": "https://download.samba.org/pub/samba/stable/",
+   "regex": "samba-(\\d+\\.\\d+\\.\\d+)\\.tar\\.gz",
+   "branch_depth": 0,
+   "packages": {
+    "apt": [
+     "samba"
+    ],
+    "dnf": [
+     "samba"
+    ],
+    "pacman": [
+     "samba"
+    ],
+    "zypper": [
+     "samba"
+    ],
+    "apk": [
+     "samba"
+    ]
+   },
+   "services": [
+    "smbd",
+    "smb"
+   ]
+  },
+  {
+   "name": "squid",
+   "aliases": [
+    "squid",
+    "squid http proxy",
+    "squid-cache:squid"
+   ],
+   "url": "https://api.github.com/repos/squid-cache/squid/releases?per_page=100",
+   "regex": "\"tag_name\":\\s*\"SQUID_(\\d+_\\d+(?:_\\d+)?)\"",
+   "branch_depth": 0,
+   "packages": {
+    "apt": [
+     "squid"
+    ],
+    "dnf": [
+     "squid"
+    ],
+    "pacman": [
+     "squid"
+    ],
+    "zypper": [
+     "squid"
+    ],
+    "apk": [
+     "squid"
+    ]
+   },
+   "services": [
+    "squid"
+   ]
+  },
+  {
+   "name": "unrealircd",
+   "aliases": [
+    "unrealircd",
+    "unreal ircd"
+   ],
+   "url": "https://www.unrealircd.org/downloads/list.json",
+   "regex": "\"version\":\\s*\"(\\d+\\.\\d+\\.\\d+(?:\\.\\d+)?)\"",
+   "branch_depth": 0,
+   "packages": {},
+   "services": [
+    "unrealircd"
+   ],
+   "notes": "Usually built from source."
+  },
+  {
+   "name": "vsftpd",
+   "aliases": [
+    "vsftpd",
+    "beasts:vsftpd"
+   ],
+   "url": "https://security.appspot.com/vsftpd.html",
+   "regex": "vsftpd-(\\d+\\.\\d+\\.\\d+)",
+   "branch_depth": 0,
+   "packages": {
+    "apt": [
+     "vsftpd"
+    ],
+    "dnf": [
+     "vsftpd"
+    ],
+    "pacman": [
+     "vsftpd"
+    ],
+    "zypper": [
+     "vsftpd"
+    ],
+    "apk": [
+     "vsftpd"
+    ]
+   },
+   "services": [
+    "vsftpd"
+   ]
+  },
+  {
+   "name": "wordpress",
+   "aliases": [
+    "wordpress"
+   ],
+   "url": "https://api.wordpress.org/core/version-check/1.7/",
+   "regex": "\"current\":\"(\\d+\\.\\d+(?:\\.\\d+)?)\"",
+   "branch_depth": 0,
+   "packages": {},
+   "services": [],
+   "notes": "Update with `wp core update` or from the admin dashboard."
+  }
+ ]
+}
